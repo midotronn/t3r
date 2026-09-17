@@ -1,4 +1,4 @@
-"""smoke_coke_fp32.py — base CogACT coke_can, 3 orientations, fp32.
+"""smoke_coke_fp32.py - base CogACT coke_can, 3 orientations, fp32.
 Compare vs recorded bf16: upright 0.80, lr_switch 0.88, laid_vert 0.60, avg 0.76."""
 import os, sys, time
 sys.path.insert(0, "/workspace/CogACT")

@@ -1,4 +1,4 @@
-"""smoke_eggplant_fp32.py — base CogACT on eggplant (published 100%), verify fp32 fix."""
+"""smoke_eggplant_fp32.py - base CogACT on eggplant (published 100%), verify fp32 fix."""
 import os, sys, time
 sys.path.insert(0, "/workspace/CogACT")
 sys.path.append("/workspace/T3R")

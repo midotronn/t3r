@@ -559,7 +559,7 @@ def run_episode(
             print("  Warning: SAM mask generation failed, running without pruning")
 
         if not use_pruning:
-            print("  Pruning DISABLED — keeping all patches (scores used for highlighting only)")
+            print("  Pruning DISABLED - keeping all patches (scores used for highlighting only)")
             patch_mask = None
 
         if torch.cuda.is_available():
@@ -667,7 +667,7 @@ def run_episode(
                 ),
             }
 
-            # VLA inference — produces a chunk of actions
+            # VLA inference - produces a chunk of actions
             if torch.cuda.is_available():
                 torch.cuda.synchronize()
             vla_start_time = time.time()

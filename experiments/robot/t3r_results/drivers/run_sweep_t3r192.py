@@ -1,4 +1,4 @@
-"""run_sweep_t3r192.py — LIGHTER-PRUNE SWEEP point: t3r_orig at keep=0.75 (~192 tok, 25% prune).
+"""run_sweep_t3r192.py - LIGHTER-PRUNE SWEEP point: t3r_orig at keep=0.75 (~192 tok, 25% prune).
 Tests whether T3R closes the gap vs adp/fastv when pruning is gentler than the 40% (154-tok) point.
 SWEEP_SUITE env selects 'google' (10 informative units) or 'bridge' (4 tasks). fp32, prune+IG bias
 (same config as the k60 @keep=0.60 run). Resumable JSON keyed 'unit'."""

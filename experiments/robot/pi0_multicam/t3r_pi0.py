@@ -1,4 +1,4 @@
-"""t3r_pi0.py — training-free multi-camera token reduction for openpi pi0.5 (PyTorch).
+"""t3r_pi0.py - training-free multi-camera token reduction for openpi pi0.5 (PyTorch).
 
 Patches PI0Pytorch.embed_prefix (+ sample_actions/denoise_step for RoPE-position preservation)
 to reduce per-camera SigLIP image tokens BEFORE the PaliGemma prefix.
@@ -144,7 +144,7 @@ def _thresh_idx(importance, k_std, N):
 
 
 def _team_merge(img_emb, lang_emb, keep_k):
-    """Return (merged [1,Ns,D], anchor_idx [Ns]) — anchors keep their original indices."""
+    """Return (merged [1,Ns,D], anchor_idx [Ns]) - anchors keep their original indices."""
     B, V, D = img_emb.shape
     topk = min(keep_k, V)
     if topk >= V:
@@ -183,7 +183,7 @@ def _team_twostage(img_emb, salience, topk, K, u, tau):
     Stage 2 (MERGE): the survivors are soft-bipartite-merged into the top-M anchors (by saliency).
     Returns (merged [1,M',D], anchor_idx [M'] original indices). `salience` = per-token score [V]
     (norm saliency in pi0, since the paper's language-image SigLIP cosine doesn't transfer to the
-    fused Gemma space — Stage-2 feature-space merge is unchanged/faithful)."""
+    fused Gemma space - Stage-2 feature-space merge is unchanged/faithful)."""
     B, V, D = img_emb.shape
     side = int(round(V ** 0.5))
     if side * side != V or V <= topk:

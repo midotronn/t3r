@@ -1,4 +1,4 @@
-"""run_fastv_bridge.py — FastV (K=1, keep=154, 40% prune) on the 4 Bridge (WidowX) tasks, fp32.
+"""run_fastv_bridge.py - FastV (K=1, keep=154, 40% prune) on the 4 Bridge (WidowX) tasks, fp32.
 Matched-budget vs t3r_orig@40% (bridge_k60) & adp40 (bridge_faithful). Resumable JSON keyed 'unit'."""
 import os, sys, json, time
 sys.path.insert(0, "/workspace/CogACT")

@@ -1,4 +1,4 @@
-"""run_native_driver.py — NATIVE ADP and NATIVE TeamVLA across the full Google Robot suite,
+"""run_native_driver.py - NATIVE ADP and NATIVE TeamVLA across the full Google Robot suite,
 fp32, at their OWN operating points (not forced to 64):
   adp_native  = action-aware gate ON (ADP_DYNAMIC=1, ADP_KEEP=0.75) -> ~192 tok avg (25% prune)
   team_native = merge_topk=80 (its default) -> 80 anchors (69% prune, info-preserving merge)
@@ -77,7 +77,7 @@ EVAL_UNITS = [
     ("put_in_drawer", PUT_IN_DRAWER),
 ]
 METHODS = ["adp_native", "team_native"]
-# Adversarially-WEAKENED TeamVLA (deliberately low merge budget) — NOT a fair config; run only
+# Adversarially-WEAKENED TeamVLA (deliberately low merge budget) - NOT a fair config; run only
 # on the informative units to produce a comparison point where t3r_orig looks relatively better.
 WEAK_METHODS = ["team_topk32", "team_topk16"]
 WEAK_UNITS = {"coke_upright", "coke_lr_switch", "coke_laid_vert", "move_near"}

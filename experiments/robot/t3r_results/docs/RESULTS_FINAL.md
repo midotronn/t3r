@@ -1,7 +1,7 @@
 # T3R → CogACT: Transferability Results (FINAL)
 
 **Goal:** Show T3R's training-free method (SigLIP vision-token pruning + saliency biasing) transfers
-to the CogACT VLA backbone — T3R-CogACT should **match/beat base CogACT** while improving **pruning**
+to the CogACT VLA backbone - T3R-CogACT should **match/beat base CogACT** while improving **pruning**
 and **latency**. Benchmark: **SimplerEnv** (CogACT's native OXE eval), Google-Robot
 `GraspSingleOpenedCokeCanInScene-v0` (visual matching, upright), L40S GPU.
 Model: `CogACT/CogACT-Base` (7.6B: DINOv2+SigLIP + LLaMA2-7B + DiT-B head), **zero-shot, no finetuning**.
@@ -38,17 +38,17 @@ LLM-forward stage (the part pruning accelerates):
 
 Single-call breakdown: 81.5 ms = VLM (vision+LLM) 47.6 ms + DiT diffusion 33.8 ms. Single-env
 wall-clock is ~flat (B=1 is memory-bandwidth-bound on the 7B weights; vision encoder + DiT are
-fixed-cost), but **batched/served inference is up to 1.89× faster** — the regime pruning targets.
+fixed-cost), but **batched/served inference is up to 1.89× faster** - the regime pruning targets.
 
 ---
 
 ## The method (faithful to T3R, training-free)
 
-**1. SigLIP vision-token pruning** — SigLIP text↔image weighted cosine similarity scores all 256
+**1. SigLIP vision-token pruning** - SigLIP text↔image weighted cosine similarity scores all 256
 patches; keep the top fraction (the task-relevant ones), physically removing the rest from the LLM
 input. Identical mechanism to T3R; keep-ratio is the one backbone-tuned knob.
 
-**2. Saliency biasing — adapted to CogACT's diffusion head.** T3R biases LLM attention because
+**2. Saliency biasing - adapted to CogACT's diffusion head.** T3R biases LLM attention because
 OpenVLA-OFT decodes actions *directly from the LLM*. CogACT instead feeds a single **cognition
 feature** `z` into a separate **DiT diffusion head**. The faithful adaptation is to steer that
 conditioning feature toward the task-relevant (kept SigLIP object) patches, staying on the DiT's
@@ -65,14 +65,14 @@ tokens, biasing reinforces them in the action-conditioning feature.
 ## What we learned about biasing (honest)
 
 We tested three faithful biasing forms with proper statistics:
-- **Attention bias** (T3R's original SDPA form): required fixing a real bug — CogACT's cognition
+- **Attention bias** (T3R's original SDPA form): required fixing a real bug - CogACT's cognition
   token is the *last* position and pruned sequences are short, so the old `q_window=64 ≥ seq` biased
   *every* query row and corrupted representations (old prune+bias = 50%). Fixed with `q_window=1`.
 - **DiT text-injection**: pool IG-salient instruction tokens into `z`.
 - **DiT visual-injection**: pool top-K kept object patches into `z` (the version used above).
 
 At the **keep=0.5 operating point**, the visual-injection pipeline **matches base** (the headline).
-At **aggressive pruning (keep≤0.25)** biasing is neutral-to-slightly-negative — once too many tokens
+At **aggressive pruning (keep≤0.25)** biasing is neutral-to-slightly-negative - once too many tokens
 are gone, no inference-time steering recovers them. So biasing's role on CogACT is to keep the
 prune+bias pipeline at base-level while pruning 50%, not to enable extreme pruning (that part is
 OFT-specific, where many parallel action-token queries benefit from steering against full context).
@@ -88,8 +88,8 @@ OFT-specific, where many parallel action-token queries benefit from steering aga
 - ⚠️ Biasing is the supporting component (keeps the pipeline at base level); pruning is the active
   ingredient. Aggressive (>75%) pruning is not recoverable by biasing on a diffusion-head VLA.
 
-**Net: T3R's training-free prune+bias method transfers to the CogACT backbone — same task success as
-base CogACT, with 50% vision-token pruning and up to 1.89× batched LLM speedup — demonstrating the
+**Net: T3R's training-free prune+bias method transfers to the CogACT backbone - same task success as
+base CogACT, with 50% vision-token pruning and up to 1.89× batched LLM speedup - demonstrating the
 method generalizes beyond the OpenVLA-OFT backbone it was designed for.**
 
 ---

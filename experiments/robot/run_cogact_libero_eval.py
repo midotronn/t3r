@@ -1,5 +1,5 @@
 """
-run_cogact_libero_eval.py — CogACT on LIBERO. Base + optional T3R (prune+bias).
+run_cogact_libero_eval.py - CogACT on LIBERO. Base + optional T3R (prune+bias).
 Faithful to t3r: SigLIP-SAM vision-token pruning + IG attention bias on the LLaMA inside the VLM.
 """
 import os, sys, json, time, argparse

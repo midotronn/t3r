@@ -1,4 +1,4 @@
-"""run_fastv_google.py — FastV (K=1, keep=154, 40% prune) on the 10 informative Google Robot units
+"""run_fastv_google.py - FastV (K=1, keep=154, 40% prune) on the 10 informative Google Robot units
 (put_in_drawer excluded: 0 for all methods incl base). fp32. Matched-budget vs t3r_orig@40% & adp40.
 Resumable JSON keyed 'unit'."""
 import os, sys, json, time

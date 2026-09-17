@@ -1,4 +1,4 @@
-"""run_k60_driver.py — ABLATION: t3r_orig at keep=0.60 (~154 tok, ~40% prune) across the
+"""run_k60_driver.py - ABLATION: t3r_orig at keep=0.60 (~154 tok, ~40% prune) across the
 full Google Robot suite. Matches the ~43% EFFECTIVE prune of the original 2-camera LIBERO
 design (where T3R pruned the 3rd-person view ~85% but kept the full wrist camera).
 Single method (t3r_orig, prune+IG bias), fp32. Compares vs the fp32 base already in `bench`.

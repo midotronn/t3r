@@ -1,4 +1,4 @@
-"""smoke_eggplant_log.py — 3 eggplant episodes with per-step gripper/z logging."""
+"""smoke_eggplant_log.py - 3 eggplant episodes with per-step gripper/z logging."""
 import os, sys, time
 sys.path.insert(0, "/workspace/CogACT")
 sys.path.append("/workspace/T3R")

@@ -1,4 +1,4 @@
-# 5-method benchmark on SimplerEnv Google Robot — matched 64-token budget (75% prune)
+# 5-method benchmark on SimplerEnv Google Robot - matched 64-token budget (75% prune)
 
 CogACT-Base zero-shot. All PRUNING methods forced to the SAME budget (25% keep = 64 tokens) for
 a fair comparison. urdf=None appearance. Methods:
@@ -36,7 +36,7 @@ a fair comparison. urdf=None appearance. Methods:
 
 ## Read-out (honest)
 
-1. **At 75% prune, ADP is the best pruning method — it even EXCEEDS base overall (78.3 vs 75.0).**
+1. **At 75% prune, ADP is the best pruning method - it even EXCEEDS base overall (78.3 vs 75.0).**
    Its QK text->vision attention importance keeps the task-relevant tokens; on drawer it beats
    base (83.4 vs 75.9) by dropping distractors. TeamVLA (merging) ≈ base (74.2).
 
@@ -49,10 +49,10 @@ a fair comparison. urdf=None appearance. Methods:
    variant (47.1). t3r_dit is more volatile (coke_upright 92 but coke_lr 56).
 
 4. **Coke is misleading in isolation:** on coke all methods look close (66-76). Only the full task
-   suite reveals T3R's weakness — coke is a single centered object where object-only pruning is fine.
+   suite reveals T3R's weakness - coke is a single centered object where object-only pruning is fine.
 
 5. **put_in_drawer:** CogACT-Base scores 0 zero-shot (open drawer + place apple, 200 steps) for all
-   methods — uninformative here.
+   methods - uninformative here.
 
 ## Bottom line
 At an aggressive, matched 64-token budget across the full Google Robot suite, **the attention-based

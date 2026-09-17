@@ -1,4 +1,4 @@
-"""smoke_natural_t3r.py — NATURAL (SigLIP-SAM adaptive) T3R: variable token count.
+"""smoke_natural_t3r.py - NATURAL (SigLIP-SAM adaptive) T3R: variable token count.
 T3R_SAM=1 -> bare object mask, scene-adaptive prune (NO forced keep ratio).
 Reports adaptive kept-token distribution + SR on a single-object task (coke) and
 a multi-object scene (move_near). fp32 base for faithful comparison."""

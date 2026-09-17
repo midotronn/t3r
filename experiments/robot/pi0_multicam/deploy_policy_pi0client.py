@@ -1,4 +1,4 @@
-"""deploy_policy.py — RoboTwin pi0 deploy via openpi WEBSOCKET CLIENT (decoupled from the sim env).
+"""deploy_policy.py - RoboTwin pi0 deploy via openpi WEBSOCKET CLIENT (decoupled from the sim env).
 Replaces the original JAX in-process pi_model. The pi0.5 policy runs as a server (openpi env, port 8000,
 with T3R/baseline hooks); this client (rtenv) sends the 3-camera obs and receives the action chunk.
 """

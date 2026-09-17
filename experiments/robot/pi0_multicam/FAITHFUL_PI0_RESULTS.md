@@ -1,14 +1,14 @@
 # Faithful T3R on pi0.5 + RoboTwin (multi-camera): IG attention bias
 
 This completes the T3R faithfulness audit on the pi0.5 backbone. The prior pi0 comparisons used a
-**norm-saliency proxy** for token selection and had **no** integrated-gradients (IG) attention bias —
+**norm-saliency proxy** for token selection and had **no** integrated-gradients (IG) attention bias -
 i.e., they exercised T3R's *pruning* but not its *biasing*. Here we add the real T3R **IG attention
 bias** and measure whether it helps on a genuinely multi-camera benchmark.
 
 ## What "faithful" means for T3R (from the original OpenVLA-OFT/CogACT code)
 Real T3R has two components:
-1. **Pruning** — SigLIP-guided SAM object mask → keep ~top salient visual patches.
-2. **IG attention bias** — `captum.LayerIntegratedGradients` over the instruction tokens (target =
+1. **Pruning** - SigLIP-guided SAM object mask → keep ~top salient visual patches.
+2. **IG attention bias** - `captum.LayerIntegratedGradients` over the instruction tokens (target =
    next-token / action logit), computed once per episode → additive SDPA bias on the action-query rows,
    steering them toward instruction-salient key positions (layers 8–23, strength 2.0).
 
@@ -31,7 +31,7 @@ Real T3R has two components:
 - Bias active & on-manifold: prune-only action `|a|max=0.0155` → prune+IG-bias `0.0205`
   (base `0.0189`, trained ~0.02); `mean|Δ|=0.0029`. No blow-up, autograd works through the server.
 
-## Result — does the faithful IG bias help? (keep 0.625 = 160 tok/cam, fixed noise, 12 ep/cell)
+## Result - does the faithful IG bias help? (keep 0.625 = 160 tok/cam, fixed noise, 12 ep/cell)
 
 Fully-paired A/B on the identical build. Prune-only reproduced the prior sweep peak (66.7%) exactly.
 
@@ -42,7 +42,7 @@ Fully-paired A/B on the identical build. Prune-only reproduced the prior sweep p
 | 1.0 | 50.0% | 41.7% | 45.8% |
 | 2.0 (T3R paper default) | 50.0% | 41.7% | 45.8% |
 
-**The IG attention bias is monotonically harmful** — neutral at best (str0.5 on click_bell), never
+**The IG attention bias is monotonically harmful** - neutral at best (str0.5 on click_bell), never
 helpful at any tested strength. At the paper-default strength 2.0 it costs **−20.8 pt** avg.
 
 ## Conclusion
@@ -60,7 +60,7 @@ This is the third, consistent evidence point: **T3R = a good training-free *prun
 IG-bias component is decoder-architecture-specific and does not port to diffusion/flow-matching VLAs.**
 
 ## Files
-- `t3r_pi0.py` — faithful module (`_ig_saliency`, IG override in `embed_prefix`, bias setup in
+- `t3r_pi0.py` - faithful module (`_ig_saliency`, IG override in `embed_prefix`, bias setup in
   `sample_actions`, additive bias in `denoise_step`).
-- `cfg_faithful.txt`, `cfg_biassweep.txt` — the A/B + strength-sweep configs.
-- `faithful_results.csv`, `biassweep_results.csv` — raw success rates.
+- `cfg_faithful.txt`, `cfg_biassweep.txt` - the A/B + strength-sweep configs.
+- `faithful_results.csv`, `biassweep_results.csv` - raw success rates.

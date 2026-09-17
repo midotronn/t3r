@@ -1,4 +1,4 @@
-# pi0.5 + RoboTwin — complete 5-task × 4-budget frontier (norm/ADP/FastV/Team)
+# pi0.5 + RoboTwin - complete 5-task × 4-budget frontier (norm/ADP/FastV/Team)
 
 Extends the task-expansion with the full keep-ratio sweep (0.25 / 0.375 / 0.5 / 0.625) on all usable
 tasks. Usable tasks (base SR > 0 under fixed noise): click_bell, click_alarmclock, place_empty_cup,
@@ -28,7 +28,7 @@ ADP/FastV/Team are below base at EVERY budget. norm dominates the other reducers
 | place_object_stand | 16.7 | 0.0 | 0.0 | 0.0 | 0.0 |
 
 norm scales cleanly and beats base on the 3 reach/press/place-cup tasks (from keep ~0.5 up), but
-**collapses to 0-8% on grab_roller and place_object_stand at every budget** — pruning destroys the fine
+**collapses to 0-8% on grab_roller and place_object_stand at every budget** - pruning destroys the fine
 visual detail those tasks need.
 
 ## Full per-task method values at each budget (base row per task)
@@ -53,7 +53,7 @@ visual detail those tasks need.
 ## Conclusion (fully characterized)
 On a diverse 5-task set, pi0 token-pruning gives at best a **small average win (+5) and only at low
 pruning (keep >= 0.625)**; it is neutral at keep 0.5 and **harmful below that**, and is **strongly
-task-dependent** — big gains on reach/press/place-cup, total collapse on grasp/place-on-stand. The
+task-dependent** - big gains on reach/press/place-cup, total collapse on grasp/place-on-stand. The
 baselines (ADP/FastV/Team) never beat base at any budget. The original pi0 "+25 over base" was an
 artifact of the two favorable click tasks; the honest cross-task result is a modest, conditional gain.
 

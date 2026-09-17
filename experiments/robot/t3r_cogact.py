@@ -1,5 +1,5 @@
 """
-t3r_cogact.py — faithful transfer of T3R (SigLIP-SAM token pruning + IG attention bias)
+t3r_cogact.py - faithful transfer of T3R (SigLIP-SAM token pruning + IG attention bias)
 to the CogACT backbone (PrismaticVLM DINOv2+SigLIP + LLaMA2-7B + DiT head).
 
 Pruning: SigLIP text-image similarity -> EfficientTAM mask -> keep ~15% of 256 patches.
@@ -38,7 +38,7 @@ class T3RController:
         self.pool_mode = os.environ.get("T3R_POOL", "both")   # visual | text | both
         self.pool_topk = int(os.environ.get("T3R_POOLK", "16"))
         self.use_sam = os.environ.get("T3R_SAM", "0") == "1"   # faithful SAM-refined pruning
-        # Faithful aggressive-pruning improvements (NO merging — pure SigLIP-SAM hard selection):
+        # Faithful aggressive-pruning improvements (NO merging - pure SigLIP-SAM hard selection):
         #  SAMFILL: force-keep the SAM-segmented object patches, then fill the remaining keep
         #           budget with the highest SigLIP-scored patches. Guarantees the object survives
         #           aggressive pruning in every orientation, and pins token count to the budget

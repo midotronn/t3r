@@ -1,4 +1,4 @@
-"""inject_put_skip.py — mark the uninformative put_in_drawer cells as done (SR=0, like base) so the
+"""inject_put_skip.py - mark the uninformative put_in_drawer cells as done (SR=0, like base) so the
 faithful driver skips them instead of hanging ~40 min each on the raytraced 200-step sim. Idempotent:
 only adds keys that are missing; never overwrites a real result."""
 import json, os

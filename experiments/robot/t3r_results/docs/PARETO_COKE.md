@@ -19,7 +19,7 @@ comparability. "ours" = faithful T3R raw SigLIP-SAM hard pruning (no SAM-fill, n
 
 *ADP's 192 is a per-step AVERAGE from its action-aware gate: it keeps all 256 tokens in
 fine-manipulation (grasp) frames and prunes only in coarse-motion frames. So it is not a
-uniform-192 method — it pays full cost exactly when it matters (grasp) and saves elsewhere.
+uniform-192 method - it pays full cost exactly when it matters (grasp) and saves elsewhere.
 
 ## SR vs prune %  (ours = O, baselines = *)
 
@@ -45,17 +45,17 @@ SR%
 ## Read-out (honest)
 
 1. **Free efficiency to 50% prune.** ours holds base SR (76.0) all the way to **128 tokens
-   (50% prune)** — keep0.75=74.7, keep0.50=76.0 both ≈ base 76.0. Half the visual tokens for
+   (50% prune)** - keep0.75=74.7, keep0.50=76.0 both ≈ base 76.0. Half the visual tokens for
    no measurable SR loss.
 
 2. **Both baselines beat pure pruning at their budgets (this session):**
    - At **192 tokens**: ADP **84.0** ≫ ours 74.7 (+9.3). ADP's dynamic gate preserves the
-     grasp-critical frames at full resolution — it even beats base. This is a real advantage
+     grasp-critical frames at full resolution - it even beats base. This is a real advantage
      of *phase-adaptive* pruning over *uniform* pruning.
    - At **80 tokens**: TeamVLA **73.3** > ours 68.0 (+5.3). Merging retains dropped-token info
      that hard pruning discards.
 
-3. **Aggressive tail:** ours degrades gracefully but sub-linearly — 69%→68.0, 75%→66.7,
+3. **Aggressive tail:** ours degrades gracefully but sub-linearly - 69%→68.0, 75%→66.7,
    85%→61.3. Even at **85% prune (38 tokens)** upright stays 0.76 (≈ base); the loss is
    concentrated in the hard rotated/laid poses.
 

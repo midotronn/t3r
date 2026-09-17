@@ -1,4 +1,4 @@
-"""serve_pi05_robotwin.py — openpi pi0.5 (pytorch) policy server for RoboTwin, over websocket.
+"""serve_pi05_robotwin.py - openpi pi0.5 (pytorch) policy server for RoboTwin, over websocket.
 Builds the validated pi05_robotwin policy (motus ckpt, 3-cam aloha, delta+adapt_to_pi) and serves it.
 T3R / baseline hooks will be attached to the underlying model here in Phase 2.
 Run in the openpi uv env:  uv run python serve_pi05_robotwin.py --port 8000

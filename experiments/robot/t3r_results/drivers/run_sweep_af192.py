@@ -1,4 +1,4 @@
-"""run_sweep_af192.py — LIGHTER-PRUNE SWEEP point at keep=192 (25% prune) for the two model-internal
+"""run_sweep_af192.py - LIGHTER-PRUNE SWEEP point at keep=192 (25% prune) for the two model-internal
 rivals, so the sweep is matched to t3r@192:
   adp192  = ADP QK-importance, gate OFF, ADP_KEEP=0.75 -> 192 tok
   fastv192 = FastV K=1, keep=192 -> 192 tok

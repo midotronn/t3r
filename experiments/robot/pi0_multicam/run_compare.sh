@@ -1,5 +1,5 @@
 #!/bin/bash
-# run_compare.sh — resumable multi-camera method comparison on pi0.5/RoboTwin.
+# run_compare.sh - resumable multi-camera method comparison on pi0.5/RoboTwin.
 # 5 conditions (base/t3r/adp/fastv/team) x TASKS, matched budget from cfg_compare.txt.
 # Resumable: skips (task,name) cells already present in the results CSV (survives pod suspend/restart).
 export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin"

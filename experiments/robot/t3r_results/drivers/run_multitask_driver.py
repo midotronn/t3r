@@ -1,8 +1,8 @@
 """
-run_multitask_driver.py — multi-task validation of the pruning-vs-SR comparison.
+run_multitask_driver.py - multi-task validation of the pruning-vs-SR comparison.
 
 Loads CogACT ONCE, hot-swaps the token-reduction controller, and evaluates a focused set of
-conditions on move_near (60 ep) and open_drawer (9 ep) — the two non-coke SimplerEnv tasks —
+conditions on move_near (60 ep) and open_drawer (9 ep) - the two non-coke SimplerEnv tasks -
 to test whether the coke Pareto pattern generalizes. Resumable: each (task, cond) result is
 flushed to JSON and skipped on restart.
 

@@ -1,5 +1,5 @@
 """
-cogact_simpler_policy.py — CogACT policy for SimplerEnv that loads via cogact_loader
+cogact_simpler_policy.py - CogACT policy for SimplerEnv that loads via cogact_loader
 (local LLaMA build, no gated meta-llama download), with optional T3R prune+bias.
 Native step/ensemble/gripper logic mirrors sim_cogact/cogact_policy.py.
 """
@@ -42,7 +42,7 @@ class CogACTSimplerInference:
         import os as _o
         method = _o.environ.get("T3R_METHOD", "siglip").lower()
         if method in ("adp", "team"):
-            # Baseline comparison condition (ADP or TeamVLA) — native token-reduction,
+            # Baseline comparison condition (ADP or TeamVLA) - native token-reduction,
             # NOT a fixed keep ratio (that is applicable to our SigLIP-SAM method only).
             from experiments.robot.baselines_cogact import BaselineController
             self._t3r = BaselineController(self.vla, method=method)

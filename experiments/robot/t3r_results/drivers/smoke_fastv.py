@@ -1,4 +1,4 @@
-"""smoke_fastv.py — verify FastV (K=1, keep=154) on coke_upright (fp32). Writes JSON result."""
+"""smoke_fastv.py - verify FastV (K=1, keep=154) on coke_upright (fp32). Writes JSON result."""
 import os, sys, time, json
 sys.path.insert(0, "/workspace/CogACT")
 sys.path.append("/workspace/T3R"); sys.path.append("/workspace/SimplerEnv")

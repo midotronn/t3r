@@ -33,9 +33,9 @@ Single-call breakdown: full predict 81.5 ms = VLM (vision+LLM) 47.6 ms + DiT dif
 - **Single-env latency ≈ flat**: B=1 is memory-bandwidth-bound on the 7B weights, and vision
   encode + DiT are fixed regardless of vision-token count.
 - **Batched throughput improves up to 1.89×** on the LLM stage: pruning halves the compute-bound
-  attention/MLP cost — the regime relevant for multi-env / served inference.
+  attention/MLP cost - the regime relevant for multi-env / served inference.
 
-## 3. IG/Visual Attention Bias AND DiT-Conditioning Injection — both faithfully tested, neither helps
+## 3. IG/Visual Attention Bias AND DiT-Conditioning Injection - both faithfully tested, neither helps
 
 I implemented and rigorously tested **two** faithful adaptations of t3r biasing:
 
@@ -61,7 +61,7 @@ Both biasing forms fall **within ±1 episode of prune-only → statistically neu
 16-episode "wins" (attn 75%, DiT 81.25%) were **small-sample noise** (SimplerEnv SR varies a lot by
 object position; reliable comparisons need ≥25-ep fixed grids).
 
-**Bias-only test (no pruning) on instruction-sensitive move_near (30-ep fixed grid)** — the regime
+**Bias-only test (no pruning) on instruction-sensitive move_near (30-ep fixed grid)** - the regime
 where biasing should help most if it helps anywhere:
 | α (DiT text-injection) | SR |
 |---|---|
@@ -72,7 +72,7 @@ where biasing should help most if it helps anywhere:
 Best case = neutral (matches base at α=0.20); otherwise it degrades. Biasing **never beats base**.
 
 **Why biasing doesn't transfer to CogACT:** SigLIP pruning already *retains the task-relevant
-tokens*, and CogACT's cognition feature is formed by full bidirectional attention over them — it
+tokens*, and CogACT's cognition feature is formed by full bidirectional attention over them - it
 already integrates that information optimally, and the DiT head is trained on exactly that feature
 distribution. Any inference-time steering (re-weighting attention, or injecting salient reps into z)
 only perturbs an already-good, on-manifold feature. In OpenVLA-OFT the bias helps because its
@@ -81,12 +81,12 @@ cognition token does not.
 
 ## Conclusion
 
-- ✅ **Pruning transfers**: SigLIP token pruning preserves SR — ~50% prune matches base; 75% prune
+- ✅ **Pruning transfers**: SigLIP token pruning preserves SR - ~50% prune matches base; 75% prune
   costs ~14% SR (86.1%→72.2%) on a fixed 36-ep grid. Keep-ratio is a backbone-tuned knob.
 - ✅ **Efficiency**: 50% fewer LLM vision tokens → up to **1.89× faster LLM stage** (batched);
   single-env wall-clock flat (7B memory-bound + fixed-cost DiT).
 - ❌ **Biasing does NOT transfer**: both attention bias (fixed) and DiT-conditioning injection are
-  statistically neutral on CogACT at proper sample sizes — pruning already keeps the task-relevant
+  statistically neutral on CogACT at proper sample sizes - pruning already keeps the task-relevant
   tokens, so biasing is redundant. Faithfully implemented and characterized, not an implementation bug.
 
 **Net:** T3R's *pruning* component transfers to CogACT; its *biasing* component is specific to

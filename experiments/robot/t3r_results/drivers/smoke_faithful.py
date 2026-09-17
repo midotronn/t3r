@@ -1,4 +1,4 @@
-"""smoke_faithful.py — verify faithful ADP gate + two-stage TeamVLA on coke_upright (fp32)."""
+"""smoke_faithful.py - verify faithful ADP gate + two-stage TeamVLA on coke_upright (fp32)."""
 import os, sys, time
 sys.path.insert(0, "/workspace/CogACT")
 sys.path.append("/workspace/T3R"); sys.path.append("/workspace/SimplerEnv")

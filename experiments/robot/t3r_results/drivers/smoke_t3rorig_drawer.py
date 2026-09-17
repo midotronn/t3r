@@ -1,4 +1,4 @@
-"""smoke_t3rorig_drawer.py — t3r_orig fp32 on RAYTRACED drawer_open_top: OOM check."""
+"""smoke_t3rorig_drawer.py - t3r_orig fp32 on RAYTRACED drawer_open_top: OOM check."""
 import os, sys, time
 sys.path.insert(0, "/workspace/CogACT")
 sys.path.append("/workspace/T3R")

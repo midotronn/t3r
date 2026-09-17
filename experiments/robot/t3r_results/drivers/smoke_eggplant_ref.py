@@ -1,4 +1,4 @@
-"""smoke_eggplant_ref.py — TRUE reference sim_cogact policy (load_vla) on eggplant.
+"""smoke_eggplant_ref.py - TRUE reference sim_cogact policy (load_vla) on eggplant.
 Decisive A/B vs my wrapper (0.167). If ref ~1.0 -> my loader/wrapper is buggy.
 If ref ~0.17 -> env/harness issue (published 100% unreachable here)."""
 import os, sys, time

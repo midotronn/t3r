@@ -1,8 +1,8 @@
-# Baseline faithfulness audit (vs primary sources) — 2026-07-02
+# Baseline faithfulness audit (vs primary sources) - 2026-07-02
 
-## ADP (VLA-ADP, arXiv 2509.22093, repo chen7086/VLA-ADP — REAL, full code)
+## ADP (VLA-ADP, arXiv 2509.22093, repo chen7086/VLA-ADP - REAL, full code)
 Source: prune_v2_config.json + modeling_prismatic.py (_compute_qk_importance_generic, qk_keep_split).
-QK IMPORTANCE (my _adp_importance vs ADP _compute_qk_importance_generic): FAITHFUL — exact match:
+QK IMPORTANCE (my _adp_importance vs ADP _compute_qk_importance_generic): FAITHFUL - exact match:
   input_layernorm -> q_proj(text)/k_proj(vis) -> multihead -> scores=q@kT*scale -> mean over (heads,text). layer0.
 keep_ratio 0.75: match. 
 qk_keep_split=[0.4,0.6]: MULTI-CAMERA ONLY (splits keep budget across camera images; only runs if num_images>1).
@@ -17,10 +17,10 @@ Dynamic gate (adp_native) APPROXIMATE, mismatches:
   - extrema decision (up=max(prev), dn=min(prev)): MATCHES.
   => adp_native (78.1) is an approximation of the gate; adp64 (78.3, the fair headline) is faithful.
 
-## TEAM-VLA (arXiv 2512.09927 "Token Expand-Merge" — paper REAL; repo Jasper-aaa/TEAM-VLA = PLACEHOLDER, no code)
+## TEAM-VLA (arXiv 2512.09927 "Token Expand-Merge" - paper REAL; repo Jasper-aaa/TEAM-VLA = PLACEHOLDER, no code)
 "top-80" IS a real paper value: "Pruning vs Merging (Final top-80)"; ablation top-50/80/110/130
   (LIBERO-Object uses u=0.35, m=130). So my TEAM_TOPK=80 default is legit (matches paper reference), NOT fabricated.
-BUT my port is a SIMPLIFICATION — NOT faithful to the 2-stage method:
+BUT my port is a SIMPLIFICATION - NOT faithful to the 2-stage method:
   Paper = (1) token PRUNE *before* backbone: similarity-sample + context-sample(u) + spatial EXPAND (Conv kernel K),
           then (2) action-guided soft-bipartite MERGE at a MIDDLE/deeper layer, keeping top-M.
   My port = SINGLE soft-bipartite merge at the PROJECTOR (pre-backbone) by text-cosine top-K. Omits stage-1

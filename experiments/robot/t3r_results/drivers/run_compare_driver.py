@@ -1,5 +1,5 @@
 """
-run_compare_driver.py — single-process, resumable head-to-head driver.
+run_compare_driver.py - single-process, resumable head-to-head driver.
 
 Loads CogACT ONCE, then evaluates every (condition x orientation) by hot-swapping the
 token-reduction controller on the persistent model. Writes each result to a JSON file and

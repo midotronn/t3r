@@ -1,22 +1,22 @@
-# π0.5 + RoboTwin — T3R keep-ratio SWEEP + base-SR validation
+# π0.5 + RoboTwin - T3R keep-ratio SWEEP + base-SR validation
 
 Answers two questions: (1) is the base SR of 41.7% a setup bug? and (2) at what keep budget does
 T3R(norm) outperform every baseline?
 
-## Q1 — Is base SR = 41.7% wrong? **No.**
+## Q1 - Is base SR = 41.7% wrong? **No.**
 - **The RoboTwin 2.0 leaderboard numbers (~60%+) are PER-TASK FINE-TUNED**, not zero-shot. The paper
   (arXiv 2506.18088) and leaderboard state every policy (incl. Pi0) is *"fine-tuned using 50 demo_clean
   demonstrations for each single task"* and *"fine-tuning and evaluation are strictly done per task"*
   (also confirmed in RoboTwin GitHub issue #146). We run the **motus pi0.5 joint 50-task checkpoint
   ZERO-SHOT** (no per-task finetuning) → lower SR is expected, not a bug.
 - **Noise seed matters a lot at small N.** Stochastic (fresh noise/episode) base on click_bell = **4/24
-  = 16.7%**, whereas the fixed seed-0 noise gives **41.7%** — seed-0 is a *lucky* draw. Neither is
+  = 16.7%**, whereas the fixed seed-0 noise gives **41.7%** - seed-0 is a *lucky* draw. Neither is
   "broken"; they bracket the zero-shot performance.
 - **Decision (per user):** use **fixed seed-0 noise** for the comparison. It gives a workable base
   (41.7%) so baselines aren't near-zero, and because *every* method uses the identical seed-0 noise,
-  the comparison is fully **paired** — the ranking reflects the token-reduction method, not RNG.
+  the comparison is fully **paired** - the ranking reflects the token-reduction method, not RNG.
 
-## Q2 — T3R keep-ratio sweep (fixed noise, 12 ep/task, click_bell + click_alarmclock)
+## Q2 - T3R keep-ratio sweep (fixed noise, 12 ep/task, click_bell + click_alarmclock)
 | T3R keep | tok/cam | click_bell | click_alarmclock | **AVG SR** |
 |----------|---------|-----------|------------------|------------|
 | 0.25 | 64 | 33.3 | 16.7 | **25.0** |
@@ -36,11 +36,11 @@ T3R(norm) outperform every baseline?
 
 ## Where T3R outperforms everything
 - **T3R beats `base` (41.7) at keep ≥ ~0.375** (50.0 at 0.375).
-- **T3R beats the best baseline TEAM-VLA (50.0) — i.e. "everything" — at keep ≥ ~0.5** (58.4), and
+- **T3R beats the best baseline TEAM-VLA (50.0) - i.e. "everything" - at keep ≥ ~0.5** (58.4), and
   ties it at keep 0.375 (50.0 vs 50.0).
 - **T3R's optimum is keep ≈ 0.625 (66.7 avg)**, comfortably above every baseline, using 160 tok/cam
   (37.5% pruned). Performance saturates 0.625–0.75.
-- **keep 0.25 (the point you asked about) = 25.0 avg — below base.** At 64 tok/cam the budget is too
+- **keep 0.25 (the point you asked about) = 25.0 avg - below base.** At 64 tok/cam the budget is too
   tight for these tasks; T3R needs ≥ ~96 tokens/cam (keep ≥ 0.375) to start winning.
 
 ### The curve (T3R avg SR vs keep)
@@ -62,7 +62,7 @@ T3R(norm) outperform every baseline?
    ~0.4–0.5), peaking at keep ≈ 0.625 (66.7 avg vs base 41.7, +25 pts).
 2. **T3R's own paper-native "no keep ratio" over-prunes π0** (~15% → 16.7). The fix is simply a less
    aggressive budget: a fixed keep of 0.5–0.625 is T3R's sweet spot on this backbone.
-3. The base SR of 41.7% is **not a setup bug** — it's zero-shot (vs the leaderboard's per-task
+3. The base SR of 41.7% is **not a setup bug** - it's zero-shot (vs the leaderboard's per-task
    fine-tuned) with a favorable fixed noise seed. All methods share the setup, so the comparison holds.
 
 ## Caveats

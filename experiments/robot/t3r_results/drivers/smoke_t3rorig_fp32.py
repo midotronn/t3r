@@ -1,4 +1,4 @@
-"""smoke_t3rorig_fp32.py — t3r_orig (prune64 + attn IG bias) on coke upright, fp32 OOM check."""
+"""smoke_t3rorig_fp32.py - t3r_orig (prune64 + attn IG bias) on coke upright, fp32 OOM check."""
 import os, sys, time
 sys.path.insert(0, "/workspace/CogACT")
 sys.path.append("/workspace/T3R")

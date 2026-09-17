@@ -43,12 +43,12 @@ sessions). Baselines run native (ADP≈192 avg via action gate; TeamVLA merges t
 
 1. **At mild pruning (25% / 192 tok), our faithful method is fully competitive.**
    ours_k75 **70.8 ≈ ADP 71.0**, both **above base (65.5)** on average. The coke-only picture
-   (ADP 0.84 ≫ ours 0.747) was misleading — ours *wins* on drawer (0.778 vs 0.556), so across
+   (ADP 0.84 ≫ ours 0.747) was misleading - ours *wins* on drawer (0.778 vs 0.556), so across
    tasks the two tie. Faithful 25% pruning is free (or better) across tasks.
 
 2. **At aggressive pruning (69% / 80 tok), TeamVLA clearly wins.**
    TeamVLA **63.0** ≫ ours **49.7** (+13.3), and TeamVLA nearly holds base (65.5). Merging
-   retains dropped-token information that hard pruning loses — this holds on ALL three tasks
+   retains dropped-token information that hard pruning loses - this holds on ALL three tasks
    (coke +5.3, move_near +23.3, drawer +11.2 in team's favor).
 
 3. **Task-dependent pruning sensitivity.** coke tolerates heavy pruning (free to 50%);
@@ -57,12 +57,12 @@ sessions). Baselines run native (ADP≈192 avg via action gate; TeamVLA merges t
    scene, must pick the right object) is the most pruning-sensitive.
 
 ## Bottom line (validated across 3 tasks)
-- Faithful T3R hard-pruning **matches base and ADP at ~25% pruning** across tasks — a solid,
+- Faithful T3R hard-pruning **matches base and ADP at ~25% pruning** across tasks - a solid,
   honest efficiency win (25% fewer visual tokens, no SR cost, competitive with SOTA ADP).
 - At **high pruning (≥50%)** it is **dominated by TeamVLA (merging)** and by ADP (adaptive
-  gating). Pure SigLIP-SAM dropping cannot match them there — the winning mechanisms
+  gating). Pure SigLIP-SAM dropping cannot match them there - the winning mechanisms
   (merging / phase-adaptive retention) are outside faithful pruning by construction.
-- SAM-fill / EMA / biasing were all tried and **hurt** (72→51→45 on coke) — no faithful add-on
+- SAM-fill / EMA / biasing were all tried and **hurt** (72→51→45 on coke) - no faithful add-on
   recovers the aggressive-regime gap.
 
 Caveats: drawer n=9 (coarse, ±0.11/episode); ADP/ours numbers carry ~±0.08–0.10 CI at n=60–75;

@@ -1,4 +1,4 @@
-"""run_faithful_driver.py — FAITHFUL ADP + FAITHFUL two-stage TeamVLA, full Google Robot suite, fp32.
+"""run_faithful_driver.py - FAITHFUL ADP + FAITHFUL two-stage TeamVLA, full Google Robot suite, fp32.
   adp_faithful  = action-aware DYNAMIC gate (net-displacement rule, initial=0, max_consec_prune=3),
                   ADP_KEEP=0.75 -> ~192 tok in coarse phases, 256 in fine phases (variable avg).
   team_faithful = TWO-STAGE (paper 2512.09927): stage-1 sim-seed + KxK spatial expand + u-context

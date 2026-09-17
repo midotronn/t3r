@@ -21,7 +21,7 @@ STRONGER, not weaker -- accurate but does NOT help t3r. Full 11-unit x 2-method 
 ative_faithful SQL table planned; preserves old 
 ative data). Auto-restart loop faithful_loop.sh + keepalive.
 
-## 4-METHOD x BOTH-SUITE COMPARISON (user request) — GOOGLE ROBOT DONE, BRIDGE RUNNING
+## 4-METHOD x BOTH-SUITE COMPARISON (user request) - GOOGLE ROBOT DONE, BRIDGE RUNNING
 User wants: t3r_orig@40%, teamVLA_faithful, adp_faithful (native), adp_faithful forced@40% (adp40).
 adp40 = ADP QK-importance selection, gate OFF, ADP_KEEP=0.60 -> 154 tok (MATCHED to t3r_orig@40%).
 Data in SQL native_faithful (Google) + bridge_faithful (pending). faithful_results.json (33 cells).
@@ -43,7 +43,7 @@ INFRA: fp32 model ~30GB fits 44GB; a stale-zombie python caused an OOM pileup ->
 run_all_faithful.sh to pkill stale driver before each (re)launch. Orchestration = run_all_faithful.sh
 (Google 33 then Bridge 12), detached + passive keepalive faithful_monitor3.sh.
 
-## 4-METHOD BRIDGE (faithful) — DONE. Both suites now complete. See files/BOTH_SUITE_FAITHFUL.md
+## 4-METHOD BRIDGE (faithful) - DONE. Both suites now complete. See files/BOTH_SUITE_FAITHFUL.md
 BRIDGE informative-3 SR (excl stack_cube~0; SQL bridge_faithful):
 | method | tok | prune% | carrot | spoon | eggplant | info-3 |
 | adp_faithful (native) | ~224 | 12% | 20.8 | 16.7 | 25.0 | 20.8 |
@@ -56,7 +56,7 @@ At matched budget ADP QK-pruning > T3R SigLIP-SAM pruning on BOTH suites; t3r_or
 four on both. Faithful fixes made baselines slightly stronger (as predicted) -> do NOT help t3r.
 Bridge near-floor (low power). put_in_drawer (raytraced) skipped=0 like base. DONE. GPU freed.
 
-## FastV BASELINE ADDED (user request) — RUNNING
+## FastV BASELINE ADDED (user request) - RUNNING
 Official FastV (arXiv 2403.06764, pkunlp-icler) ported to CogACT in fastv_cogact.py. Algorithm: run K
 LLM layers, at layer K rank image tokens by the LAST token's attention (avg over heads) from layer K-1,
 keep top-ATTENTION_RANK, prune rest for deeper layers. Adapted to transformers 4.40.1 LlamaModel.
@@ -69,7 +69,7 @@ t3r@40% 0.73) keep=154/40% verified. Full suite: run_fastv_google.py (10 units, 
 + run_fastv_bridge.py (4 tasks). Orchestrated run_fastv_all.sh detached + fastv_monitor.sh keepalive.
 Results -> fastv_google_results.json / fastv_bridge_results.json (SQL tables TBD).
 
-## FastV DONE — both suites. SQL table astv. See BOTH_SUITE_FAITHFUL.md (now 5 methods).
+## FastV DONE - both suites. SQL table astv. See BOTH_SUITE_FAITHFUL.md (now 5 methods).
 FastV (K=1, keep=154, 40% prune, token-masking, fp32):
 GOOGLE overall10u=80.6 (coke 77.3, move_near 63.3, drawer6 85.2).
 BRIDGE info-3=20.8 (carrot 25.0, spoon 29.2, eggplant 8.3; stack 0).
@@ -80,7 +80,7 @@ MATCHED 154-tok budget (t3r@40% vs adp40 vs fastv):
 suites. t3r_orig@40% is the LOWEST of all 5 pruning baselines on both. Honest result confirmed & robust.
 GPU freed, all runs complete.
 
-## LIGHTER-PRUNE SWEEP @192 (25% prune) — RUNNING (user: 'yes' to keep-192 sweep)
+## LIGHTER-PRUNE SWEEP @192 (25% prune) - RUNNING (user: 'yes' to keep-192 sweep)
 Tests whether t3r closes the gap vs adp/fastv at gentler pruning (25%/192 vs the 40%/154 point).
 3 matched methods at keep=192: t3r192 (T3R prune+bias keep=0.75), adp192 (ADP QK gate-off keep=0.75),
 fastv192 (FastV K=1 keep=192). Both suites (Google 10 units + Bridge 4). Drivers: run_sweep_t3r192.py,

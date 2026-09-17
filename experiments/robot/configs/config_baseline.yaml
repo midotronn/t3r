@@ -10,10 +10,10 @@ task_id: 0-9
 num_episodes: 10
 center_crop: true
 
-# SAM/EfficientTAM — DISABLED
+# SAM/EfficientTAM - DISABLED
 use_sam: false
 
-# Attention biasing — DISABLED
+# Attention biasing - DISABLED
 use_attention_bias: false
 
 # No OOD perturbation

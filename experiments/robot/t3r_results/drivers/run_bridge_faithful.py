@@ -1,4 +1,4 @@
-"""run_bridge_faithful.py — FAITHFUL baselines on the 4 Bridge (WidowX) tasks, fp32:
+"""run_bridge_faithful.py - FAITHFUL baselines on the 4 Bridge (WidowX) tasks, fp32:
   adp_faithful  = action-aware DYNAMIC gate, ADP_KEEP=0.75  (~native, barely prunes)
   adp40         = ADP QK-importance, gate OFF, keep 0.60 -> ~154 tok (matched to t3r_orig@40%)
   team_faithful = two-stage TeamVLA, TEAM_TOPK=80 -> <=80 anchors

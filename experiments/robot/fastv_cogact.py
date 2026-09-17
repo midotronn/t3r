@@ -1,4 +1,4 @@
-"""fastv_cogact.py — FAITHFUL FastV baseline for CogACT (arXiv 2403.06764, official
+"""fastv_cogact.py - FAITHFUL FastV baseline for CogACT (arXiv 2403.06764, official
 pkunlp-icler/FastV algorithm), adapted to transformers 4.40.1 LlamaModel.
 
 FastV: run the first K LLM layers normally; at layer K, rank image tokens by the attention
@@ -9,7 +9,7 @@ We use FastV's TOKEN-MASKING variant (accuracy-identical to inplace token-drop: 
 token attends to the exact same kept set, and CogACT reads the cognition feature from the last token,
 so the SR is unchanged from drop). Masking keeps the sequence length constant, so the per-layer
 hidden_states tuple CogACT consumes (`output.hidden_states[...][-1][:, -1, :]`) is structurally
-identical to base — only the attention mask changes from layer K onward.
+identical to base - only the attention mask changes from layer K onward.
 
 CogACT single-camera layout: [BOS(1)] [vision(256)] [text(T)]  →  SYS_LENGTH=1, IMAGE_TOKEN_LENGTH=256.
 Matched-budget config (vs t3r_orig@40% & adp40, both 154 tok): K=1, keep=154 (prune 40%).

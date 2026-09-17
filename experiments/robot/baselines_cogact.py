@@ -1,8 +1,8 @@
 """
-baselines_cogact.py — Faithful CogACT ports of two training-free VLA token-reduction
+baselines_cogact.py - Faithful CogACT ports of two training-free VLA token-reduction
 baselines, for a head-to-head comparison against T3R (SigLIP-SAM prune + DiT bias).
 
-  ADP  — Action-aware Dynamic Pruning  (ICLR'26, arXiv:2509.22093, chen7086/VLA-ADP)
+  ADP  - Action-aware Dynamic Pruning  (ICLR'26, arXiv:2509.22093, chen7086/VLA-ADP)
          * Selection signal: text -> vision QK attention importance at LLM layer 0
            (model-internal; contrast with T3R's external SigLIP similarity).
          * Action-aware dynamic gating: per motion-window the method prunes in COARSE
@@ -12,7 +12,7 @@ baselines, for a head-to-head comparison against T3R (SigLIP-SAM prune + DiT bia
          * Native config: qk_keep_ratio = 0.75 when pruning is ON (a *dynamic* effective
            ratio, NOT a fixed keep ratio).
 
-  TeamVLA — Token Expand-and-Merge   (arXiv:2512.09927, Jasper-aaa/TEAM-VLA)
+  TeamVLA - Token Expand-and-Merge   (arXiv:2512.09927, Jasper-aaa/TEAM-VLA)
          * Similarity-sample salient patches per language token, then soft bipartite
            MERGE the remaining tokens into the anchors (W' = (S + W^T T)/(1 + s)).
            Merging (not dropping) is its signature contribution.
@@ -24,7 +24,7 @@ intercept at `projector.forward` (post-projection, LLM embedding space): the vis
 attention mask in PrismaticVLM.forward is built from the post-projector token count, so
 reducing there yields a fully consistent attention mask with no HF-version coupling.
 
-Per the user's design decision, the keep ratio is NOT fixed for these baselines — each
+Per the user's design decision, the keep ratio is NOT fixed for these baselines - each
 runs in its native configuration and reports its own achieved prune ratio vs success.
 """
 import os

@@ -1,4 +1,4 @@
-# WidowX/Bridge benchmark — matched 64-token budget (75% prune)
+# WidowX/Bridge benchmark - matched 64-token budget (75% prune)
 
 CogACT-Base zero-shot, policy_setup=widowx_bridge. Methods: base (256 tok), t3r_orig (SigLIP-SAM
 prune64 + IG attention bias), adp64 (QK-importance @64), team64 (expand-merge @64). t3r_dit
@@ -24,11 +24,11 @@ excluded per request. 24 episodes/task.
 
 ## Read-out
 
-1. **CogACT-Base is weak on Bridge zero-shot (~25% on the informative tasks)** — Bridge is harder
+1. **CogACT-Base is weak on Bridge zero-shot (~25% on the informative tasks)** - Bridge is harder
    for it than the Google Robot suite. stack_cube ≈ 0 for all methods (uninformative).
 2. **Bridge is very pruning-sensitive:** at 64 tokens every method drops well below base.
 3. **Ranking matches the Google Robot benchmark:** team64 (13.9) ≈ adp64 (12.5) > t3r_orig (5.6).
-   **T3R is again the weakest — roughly half the attention-based baselines.**
+   **T3R is again the weakest - roughly half the attention-based baselines.**
 4. Per-task the best pruner varies (carrot: adp64 ties base; spoon: team64 ties base; eggplant:
    all collapse), but **T3R never leads on any Bridge task.**
 

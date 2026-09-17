@@ -1,4 +1,4 @@
-"""dump_results.py <json_path> — print all completed cells (sr not None) sorted, for ingestion."""
+"""dump_results.py <json_path> - print all completed cells (sr not None) sorted, for ingestion."""
 import json, sys
 p = sys.argv[1]
 r = json.load(open(p))

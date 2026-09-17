@@ -9,7 +9,7 @@ Benchmark: SimplerEnv visual-matching, CogACT-Base zero-shot, L40S. pick_coke_ca
 ## Faithful method (T3R on CogACT)
 - **Prune**: SigLIP-SAM token pruning (drop tokens), position-IDs preserved.
 - **Bias**: DiT-CONDITIONING injection of kept object patches into the diffusion conditioning `z`
-  (`z' = (1-a)*z + a*pool`, POOL=visual). This is the architectural exploit — feed task-relevant visual
+  (`z' = (1-a)*z + a*pool`, POOL=visual). This is the architectural exploit - feed task-relevant visual
   evidence into the DiT conditioning it was trained on. Attention-bias does NOT work on CogACT; this does.
 
 ## SR vs Pruning (3-orient, 75 trials) + LLM-stage speedup (batched)
@@ -38,5 +38,5 @@ Benchmark: SimplerEnv visual-matching, CogACT-Base zero-shot, L40S. pick_coke_ca
 ## Verdict
 T3R pruning transfers to CogACT as an SR/efficiency Pareto knob. DiT-conditioning biasing (the faithful
 adaptation of t3r biasing to a diffusion-head VLA) HELPS at moderate pruning (keep0.7-0.8: +5pt, ~base).
-At T3R-natural aggressive pruning (75%): ~15pt SR cost buys up to **3.14x** batched LLM speedup — a strong
+At T3R-natural aggressive pruning (75%): ~15pt SR cost buys up to **3.14x** batched LLM speedup - a strong
 efficiency win, bias neutral. Random==SigLIP at equal count, so the gain is token-count-driven.

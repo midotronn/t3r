@@ -1,4 +1,4 @@
-"""run_bridge_k60.py — t3r_orig at keep=0.60 (~154 tok, 40% prune) on the 4 Bridge tasks,
+"""run_bridge_k60.py - t3r_orig at keep=0.60 (~154 tok, 40% prune) on the 4 Bridge tasks,
 fp32. Completes the single-object claim across BOTH SimplerEnv suites. vs the fp32 base in
 `bridge`. Resumable JSON keyed 'unit'."""
 import os, sys, json, time

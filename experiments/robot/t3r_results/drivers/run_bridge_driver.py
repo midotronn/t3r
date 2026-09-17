@@ -1,5 +1,5 @@
 """
-run_bridge_driver.py — WidowX/Bridge suite, 4 methods (base, t3r_orig, adp64, team64).
+run_bridge_driver.py - WidowX/Bridge suite, 4 methods (base, t3r_orig, adp64, team64).
 
 CogACT-Base zero-shot on the 4 SimplerEnv Bridge tasks, policy_setup=widowx_bridge. All
 PRUNING methods forced to 64 tokens (25% keep / 75% prune). t3r_dit EXCLUDED per request.

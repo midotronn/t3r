@@ -1,10 +1,10 @@
 """
-run_bench_driver.py — comprehensive 5-method x all-Google-Robot-tasks benchmark on CogACT.
+run_bench_driver.py - comprehensive 5-method x all-Google-Robot-tasks benchmark on CogACT.
 
 Loads CogACT ONCE, hot-swaps the token-reduction method, and evaluates every eval-unit.
 All PRUNING methods are forced to the SAME budget (25% keep = 64 tokens) for a fair
 matched-token comparison:
-  base      : no reduction (256 tokens) — reference
+  base      : no reduction (256 tokens) - reference
   t3r_dit   : T3R full method = SigLIP-SAM prune(64) + DiT-conditioning bias (alpha 0.15)
   t3r_orig  : T3R full method = SigLIP-SAM prune(64) + original IG attention bias (str 1.0)
   adp64     : ADP forced to 64 (QK-importance, keep0.25, action-gate OFF)

@@ -1,4 +1,4 @@
-"""run_k60_drawers.py — completes the keep=0.60 ablation: the 6 drawers + put_in_drawer,
+"""run_k60_drawers.py - completes the keep=0.60 ablation: the 6 drawers + put_in_drawer,
 PRUNE-ONLY (T3R_BIAS=0) to avoid the IG-backward GPU peak that OOMs/hangs raytraced envs.
 Bias is neutral at these operating points, so prune-only ~= full method here. Appends to the
 same /workspace/k60_results.json (skips the coke+move_near cells already done)."""

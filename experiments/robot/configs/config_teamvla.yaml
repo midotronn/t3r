@@ -15,7 +15,7 @@ token_density_threshold: 1.0
 token_context_sample_ratio: 0.1
 token_expansion_kernel_size: 3
 
-# Token merging — DISABLED
+# Token merging - DISABLED
 use_token_merging: false
 token_merge_topk: 80
 token_merge_layer: 16

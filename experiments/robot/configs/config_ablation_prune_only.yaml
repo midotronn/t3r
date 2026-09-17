@@ -9,7 +9,7 @@ task_id: 0-9
 num_episodes: 10
 center_crop: true
 
-# SAM pruning — ENABLED
+# SAM pruning - ENABLED
 use_sam: true
 sam_backend: "efficienttam"
 sam_checkpoint: "EfficientTAM/checkpoints"
@@ -25,7 +25,7 @@ k_initial: 50
 dbscan_eps: 2.0
 min_cluster_size: 3
 
-# Attention biasing — DISABLED (ablation)
+# Attention biasing - DISABLED (ablation)
 use_attention_bias: false
 
 # No OOD perturbation
