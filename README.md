@@ -93,10 +93,6 @@ cameras. The unpruned baseline averages 33.4% success.
 | 160 | 62.5% | **38.3%** | 25.0% | 28.3% | 15.0% |
 | 192 | 75% | **62.5%** | 33.4% | 37.5% | 20.9% |
 
-The π0.5 port uses norm-saliency selection while preserving original token
-positions. The reported π0.5 results do not use the OpenVLA-OFT attention-bias
-stage.
-
 ## OpenVLA-OFT reproduction
 
 The following environment was tested for the OpenVLA-OFT/LIBERO-Spatial
