@@ -1047,7 +1047,7 @@ def main():
                 sam_module=sam_module,
                 use_mask_filtering=args.use_sam,
                 episode_idx=ep_idx,
-                top_k_points=args.top_k_points,
+                top_k_points=getattr(args, "top_k_points", 10),
                 num_neg_points=getattr(args, "num_neg_points", 5),
                 mask_to_patch_threshold=getattr(args, "mask_to_patch_threshold", 0.1),
                 max_steps=max_steps,
