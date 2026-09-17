@@ -271,7 +271,7 @@ If you use this code, please cite both T3R and OpenVLA-OFT:
 ```bibtex
 @inproceedings{hassan2027t3r,
   title={T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models},
-  author={Hassan, Mohammed and Chen, Zhenyang and Wang, Zheng and Zhu, Zhixin and Chen, Tianlong and Lin, Yingyan and Li, Chaojian},
+  author={Hassan, Mohammed and Chen, Zhenyang and Wang, Zheng and Zhu, Zhixin and Chen, Tianlong and Lin, Yingyan (Celine) and Li, Chaojian},
   booktitle={Proceedings of the 32nd Asia and South Pacific Design Automation Conference (ASP-DAC)},
   year={2027}
 }
