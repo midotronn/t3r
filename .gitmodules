@@ -1,0 +1,4 @@
+[submodule "openvla-oft"]
+	path = openvla-oft
+	url = https://github.com/midotronn/openvla-oft.git
+	branch = t3r
