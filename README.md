@@ -6,9 +6,9 @@ Towards Efficient and Robust VLA Models**.
 The website is published from the `gh-pages` branch of the same repository as
 the research code.
 
-Live site: <https://midotronn.github.io/openvla-oft/>
+Live site: <https://midotronn.github.io/t3r/>
 
-Code: <https://github.com/midotronn/openvla-oft>
+Code: <https://github.com/midotronn/t3r>
 
 ## Updating the paper link
 
