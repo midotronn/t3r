@@ -5,17 +5,26 @@ tasks. Usable tasks (base SR > 0 under fixed noise): click_bell, click_alarmcloc
 grab_roller, place_object_stand (5). 12 ep/task, fixed noise. Core methods: base + norm/ADP/FastV/Team.
 (SigLIP / SigLIP-SAM were run at 0.625 only; norm is the T3R representative.)
 
-## 5-task average SR (base = 33.4)
+## 5-task average SR (base = 33.3)
+
+Rates pool integer successes across the five tasks (60 episodes per method/budget),
+using one final matched 12-episode record per task and rounding only the aggregate.
 
 | tok/cam (keep) | norm | ADP | FastV | Team |
 |---|---|---|---|---|
 | 64 (0.25) | 13.3 | 13.3 | 11.7 | 3.3 |
 | 96 (0.375) | 25.0 | 13.3 | 23.3 | 11.7 |
-| 128 (0.5) | 33.3 | 19.4 | 18.1 | 13.9 |
+| 128 (0.5) | 33.3 | 21.7 | 18.3 | 15.0 |
 | 160 (0.625) | **38.3** | 25.0 | 28.3 | 15.0 |
 
-**Only norm reaches/beats base, and only at keep 0.625 (+4.9); tied at 0.5; below base at 0.375/0.25.
+**Norm matches base at keep 0.5 and exceeds it at keep 0.625 (+5.0 pp); below base at 0.375/0.25.
 ADP/FastV/Team are below base at EVERY budget. norm dominates the other reducers throughout.**
+
+**Numerical correction (2026-09-26):** The earlier 128-token competitor averages
+included both preliminary and final `click_bell` records. Keeping one record per
+task gives ADP 13/60 (21.7%), FastV 11/60 (18.3%), and TeamVLA 9/60 (15.0%).
+The baseline is 20/60 (33.3%), computed before rounding the task percentages.
+T3R's counts and all raw result files are unchanged.
 
 ## Per-task norm curve (task-dependence)
 
@@ -57,5 +66,9 @@ task-dependent** - big gains on reach/press/place-cup, total collapse on grasp/p
 baselines (ADP/FastV/Team) never beat base at any budget. The original pi0 "+25 over base" was an
 artifact of the two favorable click tasks; the honest cross-task result is a modest, conditional gain.
 
-Raw: `tentask_results.csv`. SQL `pi0_multicam` (all 5 tasks, keeps 0.25-0.625). Budget scope: 0.25-0.625
-core methods (0.75 not filled on new tasks; each cell ~8 min and the pod must hold an SSH channel to run).
+Raw: `compare_k50norm_results.csv`, `t3rfill_results.csv`, and `fulltable_results.csv`
+for the two click tasks; `tentask_results.csv` for the other three tasks.
+Historical SQL `pi0_multicam` contains duplicate records and must not be averaged
+without selecting one final matched record per task/method/budget.
+Budget scope: 0.25-0.625 core methods (0.75 not filled on new tasks; each cell ~8 min
+and the pod must hold an SSH channel to run).

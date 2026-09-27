@@ -28,12 +28,15 @@ tasks were used originally - few RoboTwin tasks have non-trivial zero-shot base.
 | place_empty_cup | 41.7 | **50.0** | 33.3 | 50.0 | 0.0 | +8 ✓ |
 | grab_roller | 25.0 | 8.3 | 0.0 | 8.3 | **16.7** | **−17 ✗** |
 | place_object_stand | 16.7 | 0.0 | **25.0** | 16.7 | 0.0 | **−17 ✗** |
-| **AVG (5 tasks)** | **33.4** | **38.3** | 25.0 | 28.3 | 15.0 | **+4.9** |
+| **AVG (5 tasks)** | **33.3** | **38.3** | 25.0 | 28.3 | 15.0 | **+5.0** |
+
+The average uses pooled integer successes over 60 episodes, rounded once, rather
+than averaging the rounded per-task percentages displayed above.
 
 ## Findings
-1. **Ranking holds:** norm 38.3 > base 33.4 > fastv 28.3 > adp 25.0 > team 15.0. The core story (norm-prune
+1. **Ranking holds:** norm 38.3 > base 33.3 > fastv 28.3 > adp 25.0 > team 15.0. The core story (norm-prune
    wins; attention/merge baselines fall below base) survives on the 5-task average.
-2. **Margin collapses +25 → +4.9.** The original +25 was inflated by 2 favorable click tasks.
+2. **Margin collapses +25 → +5.0.** The original +25 was inflated by 2 favorable click tasks.
 3. **norm is strongly task-dependent:** helps click/reach-press/place-cup (+8 to +33), **hurts grasp
    (grab_roller −17) and place-on-stand (place_object_stand −17)** - tasks needing fine visual detail that
    pruning destroys.

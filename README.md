@@ -83,13 +83,15 @@ its native operating point.
 | **T3R (60%)** | 67.7% | 10.4% |
 
 The π0.5 transfer is evaluated zero-shot on five RoboTwin tasks with three
-cameras. The unpruned baseline averages 33.4% success.
+cameras, using 12 episodes per task (60 per method/budget). Success rates are
+computed from pooled integer counts and rounded once. The unpruned baseline
+achieves 33.3% success (20/60).
 
 | Tokens/camera | Keep ratio | T3R | ADP | FastV | TeamVLA |
 |---:|---:|---:|---:|---:|---:|
 | 64 | 25% | **13.3%** | 13.3% | 11.7% | 3.3% |
 | 96 | 37.5% | **25.0%** | 13.3% | 23.3% | 11.7% |
-| 128 | 50% | **33.3%** | 19.4% | 18.1% | 13.9% |
+| 128 | 50% | **33.3%** | 21.7% | 18.3% | 15.0% |
 | 160 | 62.5% | **38.3%** | 25.0% | 28.3% | 15.0% |
 
 ## OpenVLA-OFT reproduction
